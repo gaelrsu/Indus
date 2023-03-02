@@ -12,3 +12,4 @@ while True:
     rr = client.read_holding_registers(1, 20)
     print(rr.registers)
     time.sleep(1)
+#exemple : python3 discovery.py 10.10.10.2
