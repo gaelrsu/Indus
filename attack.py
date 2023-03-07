@@ -10,3 +10,4 @@ client = ModbusClient(ip, port=502)
 client.connect()
 while True:
     client.write_register(1, 0) #le 1 correspond au register sur lequel écrire et le 0 la valeur à insérer, possibilité d'avoir plusieurs lignes
+    client.write_coils(40, 1)
