@@ -1,6 +1,12 @@
 # Trame Modbus à décoder
 trame_modbus = b'\x01\x03\x00\x01\x00\x02\xc5\xcd'
 
+# \x01 est l'adresse de l'esclave, qui est 0x01 en hexadécimal (ou 1 en décimal)
+# \x03 est le code de fonction pour une lecture de registres
+# \x00\x01 est l'adresse du premier registre à lire, qui est 0x0001 en hexadécimal (ou 1 en décimal)
+# \x00\x02 est le nombre de registres à lire, qui est 0x0002 en hexadécimal (ou 2 en décimal)
+# \xff\xff est la valeur des deux registres lus, qui est -1 en décimal (car la valeur maximale pour un entier sur 16 bits en complément à deux est 65535, donc -1 correspond à l'octet 0xFF suivi de l'octet 0xFF).
+
 # Lecture de l'adresse de l'esclave
 adresse_esclave = trame_modbus[0]
 print("Adresse de l'esclave :", adresse_esclave)
