@@ -5,3 +5,15 @@
 or 
 
 apt install python3-pymodbus 
+
+
+
+
+
+## Windows 
+
+https://www.python.org/downloads/
+
+pip install pymodbus
+python -c "import pymodbus"
+
