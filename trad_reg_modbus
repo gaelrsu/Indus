@@ -1,0 +1,31 @@
+# Trame Modbus à décoder
+trame_modbus = b'\x01\x03\x00\x01\x00\x02\xc5\xcd'
+
+# Lecture de l'adresse de l'esclave
+adresse_esclave = trame_modbus[0]
+print("Adresse de l'esclave :", adresse_esclave)
+
+# Lecture de la fonction
+fonction = trame_modbus[1]
+print("Fonction :", fonction)
+
+# Lecture de l'adresse de registre
+adresse_registre = int.from_bytes(trame_modbus[2:4], byteorder='big')
+print("Adresse de registre :", adresse_registre)
+
+# Lecture du nombre de registres à lire
+nb_registres = int.from_bytes(trame_modbus[4:6], byteorder='big')
+print("Nombre de registres :", nb_registres)
+
+# Calcul de la valeur
+octets_valeur = trame_modbus[6:]
+if nb_registres == 1:
+    valeur = int.from_bytes(octets_valeur, byteorder='big', signed=True)
+else:
+    valeurs = []
+    for i in range(nb_registres):
+        octets_valeur_i = octets_valeur[i*2:(i+1)*2]
+        valeur_i = int.from_bytes(octets_valeur_i, byteorder='big', signed=True)
+        valeurs.append(valeur_i)
+    valeur = valeurs
+print("Valeur :", valeur)
